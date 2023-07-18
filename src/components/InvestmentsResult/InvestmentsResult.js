@@ -8,7 +8,6 @@ const formatter = new Intl.NumberFormat("en-US", {
 })
 
 export default function InvestmentsResult({ initialInvestment, incomes }) {
-  console.log(initialInvestment, incomes)
   let content = (
     <tr>
       <td colSpan="5">No investment calculated</td>
