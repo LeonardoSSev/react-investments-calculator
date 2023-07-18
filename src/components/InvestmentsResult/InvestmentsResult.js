@@ -1,5 +1,12 @@
 import "./InvestmentsResult.css";
 
+const formatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2
+})
+
 export default function InvestmentsResult({ initialInvestment, incomes }) {
   console.log(initialInvestment, incomes)
   let content = (
@@ -13,10 +20,10 @@ export default function InvestmentsResult({ initialInvestment, incomes }) {
       return (
         <tr key={year}>
           <td>{year}</td>
-          <td>{savingsEndOfYear}</td>
-          <td>{yearlyInterest}</td>
-          <td>{savingsEndOfYear - initialInvestment - (yearlyContribution * year)}</td>
-          <td>{initialInvestment + (yearlyContribution * year)}</td>
+          <td>{formatter.format(savingsEndOfYear)}</td>
+          <td>{formatter.format(yearlyInterest)}</td>
+          <td>{formatter.format(savingsEndOfYear - initialInvestment - (yearlyContribution * year))}</td>
+          <td>{formatter.format(initialInvestment + (yearlyContribution * year))}</td>
         </tr>
       );
       
