@@ -1,25 +1,25 @@
-import "./InvestmentsResult.css"
+import "./InvestmentsResult.css";
 
-export default function InvestmentsResult({ investments }) {
+export default function InvestmentsResult({ initialInvestment, incomes }) {
+  console.log(initialInvestment, incomes)
   let content = (
     <tr>
-      <td>YEAR NUMBER</td>
-      <td>TOTAL SAVINGS END OF YEAR</td>
-      <td>INTEREST GAINED IN YEAR</td>
-      <td>TOTAL INTEREST GAINED</td>
-      <td>TOTAL INVESTED CAPITAL</td>
+      <td colSpan="5">No investment calculated</td>
     </tr>
   );
 
-  if (investments && investments.length > 0) {
-    content = investments.map( investment => {
-      <tr>
-        <td>{investment.year}</td>
-        <td>{investment.yearTotalSavings}</td>
-        <td>{investment.interestGainedInYear}</td>
-        <td>{investment.totalInterestGained}</td>
-        <td>{investment.totalInvested}</td>
-      </tr>;
+  if (incomes && incomes.length > 0) {
+    content = incomes.map(( {year, yearlyInterest, savingsEndOfYear, yearlyContribution, totalInvested } ) => {
+      return (
+        <tr key={year}>
+          <td>{year}</td>
+          <td>{savingsEndOfYear}</td>
+          <td>{yearlyInterest}</td>
+          <td>{savingsEndOfYear - initialInvestment - (yearlyContribution * year)}</td>
+          <td>{initialInvestment + (yearlyContribution * year)}</td>
+        </tr>
+      );
+      
     });
   }
 
@@ -35,6 +35,15 @@ export default function InvestmentsResult({ investments }) {
         </tr>
       </thead>
       <tbody>{content}</tbody>
+      <tfoot>
+        <tr>
+          <td>YEAR NUMBER</td>
+          <td>TOTAL SAVINGS END OF YEAR</td>
+          <td>INTEREST GAINED IN YEAR</td>
+          <td>TOTAL INTEREST GAINED</td>
+          <td>TOTAL INVESTED CAPITAL</td>
+        </tr>
+      </tfoot>
     </table>
   );
 }

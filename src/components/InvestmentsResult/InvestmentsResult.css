@@ -12,7 +12,7 @@
   color: #83e6c0;
 }
 
-.result tbody {
+.result tbody, .result tfoot {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 0.85rem;
   color: #c2e9e0;
