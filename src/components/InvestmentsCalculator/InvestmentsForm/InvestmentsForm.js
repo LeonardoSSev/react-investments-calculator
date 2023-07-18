@@ -16,7 +16,8 @@ export default function InvestmentsForm(props) {
   const resetHandler = (e) => {
     e.preventDefault();
     props.onReset();
-  }
+  };
+  
   const submitHandler = (e) => {
     e.preventDefault();
     const input = {

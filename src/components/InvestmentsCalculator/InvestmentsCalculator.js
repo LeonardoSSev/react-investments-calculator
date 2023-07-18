@@ -10,7 +10,7 @@ export default function InvestmentsCalculator(props) {
 
     // The below code calculates yearly results (total savings, interest etc)
     for (let i = 0; i < input.duration; i++) {
-      const yearlyInterest = input.currentSavings * expectedReturnCalculated;
+      const yearlyInterest = currentSavingsCalculated * expectedReturnCalculated;
       currentSavingsCalculated += yearlyInterest + input.yearlyContribution;
 
       yearlyData.push({
